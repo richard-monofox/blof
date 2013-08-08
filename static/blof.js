@@ -16,15 +16,18 @@ webservice = {
                           $form: $F_antagonise },
             $article = $('#' + form_data.article_key);
 
-        form_data.body != $('p', $article).data('conforming')
-            && webservice.post(feedstock, function(response){
-            
-                $article.fadeOut(function(){
-                    $article.html($(response).html()) ;
+        function update_article(response){
+            return $article.fadeOut(function(){
+                $article.html($(response).html()) ;
                     $article.fadeIn();
                     $('.date').humaneDates();
-                });
-            }, form.reset);
+            });
+        }
+        // .data coerces text resulting in new lines being different to those displayed on screen
+        NEW_LINE = /(\r\n|\n|\r)/gm;
+        form_data.body.replace(NEW_LINE,'') != $('p', $article).data('conforming').replace(NEW_LINE,'')
+            ? webservice.post(feedstock, update_article, form.reset)
+            : update_article($article) && form.reset();
     },
     remove: function(article_key){
 
