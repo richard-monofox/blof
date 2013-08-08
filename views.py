@@ -116,3 +116,7 @@ class WebserviceView(TemplateView):
         self.template_name = 'articles.html'
 
         return {'articles': articles }
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 34ccc4cc1fe7adc513a697f00d5b2a0cb157e3c8
