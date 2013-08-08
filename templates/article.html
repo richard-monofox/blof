@@ -1,0 +1,9 @@
+<blockquote id='{{article.id}}'>
+	<p data-conforming="{{article.body}}">{{article.antagonised|safe}}</p>
+    <small>{{article.user}} <span class="date" title="{{article.date_iso}}"></span>
+    	{% if article.user = blof_user %}
+	    	<button type="button" class="btn btn-default btn-xs edit">edit</button>
+	    	<button type="button"class="btn btn-default btn-xs remove">delete</button>
+	    {% endif %}
+    </small>
+</blockquote>

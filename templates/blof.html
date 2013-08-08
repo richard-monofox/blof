@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
+    <head>
+        <link rel="stylesheet" href="static/bootstrap.min.css"/>  
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.0.3/jquery.noty.js"></script>
+        <script type="text/javascript" src="https://9eb6def87a2436664962-4594f8c28d54b9b36cc34ef63a70bb5d.ssl.cf3.rackcdn.com/monofox-noty-theme.js"></script>
+        <script type="text/javascript" src="https://9eb6def87a2436664962-4594f8c28d54b9b36cc34ef63a70bb5d.ssl.cf3.rackcdn.com/noty-topRight.js"></script>
+        <script type="text/javascript" src="https://9eb6def87a2436664962-4594f8c28d54b9b36cc34ef63a70bb5d.ssl.cf3.rackcdn.com/jquery.humane.js"></script>
+        <script src="/static/blof.js"></script>
+        <title>Blof</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <style>
+            #blof-stream    { margin-top: 20px; background: #f1f1f1; border: 1px dotted #dedede; overflow: auto; webkit-box-shadow: 2px 2px 3px #dedede; -moz-box-shadow: 2px 2px 3px #dedede; box-shadow: 2px 2px 3px #dedede;}
+            .wait, .wait *  { cursor: wait; }
+            .navbar         { border-top: 1px dotted #dedede; }
+            .navbar button  { margin-top: 10px; }
+            .date           { text-transform: lowercase}
+            .row            { margin-left: 20px; }
+            h1              { font-weight: bold; }
+            h6              { color: gray;}
+        </style>
+    </head>
+    <body data-csrf='{{csrf_token}}'>
+        <div class="row">
+            <div id="blof-stream" class="col-6 col-sm-6 col-lg-6">
+                {% include 'articles.html' %}
+            </div>
+
+            <div class="col-6 col-sm-6 col-lg-6">
+                <h1>Blof</h1>
+                <h5>Blog to enrage grammar nazis and confound spelling aficionados</h5>
+                <form class="form-horizontal" id="antagonise">
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            <textarea class="form-control" rows="3" id="id_body" name="body" ></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Antagonise</button>
+                    <input type="hidden" name="article_key" id="article_key">
+                </form>
+                
+                <dl>
+                  <dt>What?</dt>
+                  <dd>Blof takes well mannered sentences and adds gramatical errors.</dd>
+                  <dt>Why?</dt>
+                  <dd>Some men want to watch the world burn, one sentence at a time.</dd>
+                  <dt>Who?</dt>
+                  <dd><a href="mailto:richard@monofox.co.uk">Richard Tier</a> made this, & <a href="www.monofox.co.uk">monofox</a> - a social media platform for schools.</dd>
+                </dl>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-fixed-bottom">
+            <button id="more" class="btn btn-default">More</button>
+            <a href="{{logout_url|safe}}"><button id="more" class="btn btn-default pull-right">logout {{blof_user}}</button></a>
+        </div>
+    </body>
+</html>
