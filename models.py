@@ -93,7 +93,7 @@ class Article(models.Model):
         text = IMPACTFUL_WORD.sub(r'"\1!"', text)
 
         # "richard." --> "richard".
-        text = PUNCTUATION_IN_QUOTE.sub(r'\1".', text)
+        text = PUNCTUATION_IN_QUOTE.sub(r'\1"\2', text)
 
         return text
 
